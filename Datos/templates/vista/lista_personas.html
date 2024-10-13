@@ -1,0 +1,136 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<br>
+<br>
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/ALL.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Usuarios</title>
+
+    <style>
+        .input-group {
+            position: relative;
+        }
+
+        .input {
+            border: solid 1.5px #9e9e9e;
+            border-radius: 1rem;
+            background: none;
+            padding: 1rem;
+            font-size: 1rem;
+            color: black;
+            transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .user-label {
+            position: absolute;
+            left: 15px;
+            color: #828282;
+            pointer-events: none;
+            transform: translateY(1rem);
+            transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input:focus,
+        .input:valid {
+            outline: none;
+            border: 1.5px solid #1a73e8;
+        }
+
+        .input:focus~.user-label,
+        .input:valid~.user-label {
+            transform: translateY(-50%) scale(0.8);
+            background-color: #fff;
+            padding: 0 .2em;
+            color: #2196f3;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Listado de Usuarios</h1>
+    <br>
+    <center>
+        <div style="display: flex; justify-content: space-evenly;">
+            <form method="GET" action="{% url 'buscar_Persona' %}">
+                <div class="input-group">
+                    <input required="" type="text" name="q" autocomplete="off" class="input">
+                    <label class="user-label">Buscar Persona</label>
+                </div>
+            </form>
+            <a href="{% url 'Listado_Personas' %}" class="btn">Todo</a>
+        </div>
+    </center>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Área</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in producto %}
+            <tr>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.area }}</td>
+                <td>
+                    <a href="{% url 'Editar_Persona' item.id %}" class="btn">Editar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No se encontraron resultados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+
+</html>
+{% endblock %}

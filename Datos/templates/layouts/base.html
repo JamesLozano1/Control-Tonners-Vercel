@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Tonners</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul style="display: flex; justify-content: space-evenly; align-items: center;">
+            <li>
+                <img src="{% static 'logo.png' %}" alt="Logo" style="width: 250px;" onclick="inicio()">
+            </li>
+            <li class="{% if request.path == '/R_Persona/' %}active{% elif request.path == '/R_Area/'%} active {% elif request.path == '/Lista/the/personas/' %} active {% elif request.path == '/buscar_Persona/' %} active {% elif request.path == '/Lista_Areas/' %} active {% elif request.path == '/Buscar_Area/' %} active {% endif %}">
+                <a href="{% url 'R_Area' %}">Usuario</a>
+            </li>
+            <li class="{% if request.path == '/Ver_Tabla_OFP/' %}active{% elif request.path == '/Ver_Tabla_Municipios/' %}active{% elif request.path == '/buscar_T_OFP/' %}active{% elif request.path == '/buscar_Tabla_T_Toners_Municipios/' %}active {% elif request.path == '/Tabla_Impresoras_OFC/' %} active {% elif request.path == '/detalles_T_OFP/' %} active {% elif request.path == '/detalles_T_Municipios/' %} active {% elif request.path == '/Tabla/Impresoras/Municipios/' %} active {% endif %}">
+                <a href="{% url 'Ver_Tabla' %}">Impresoras</a>
+            </li>
+            <li class="{% if request.path == '/L_Tonner/' %}active{% elif request.path == '/V_Toners_R/'%} active {% elif request.path == '/E_Tonner/'%} active{% elif request.path == '/R_Tonner/'%} active {% elif request.path == '/buscar_Toners/' %} active {% elif request.path == '/Toner_Recarga/' %} active {% elif request.path == '/ver_carrito/' %} active {% elif request.path == 'Registro Toner Oficina Principal' %} active {% elif request.path == '/buscar_toners_R/' %} active {% elif request.path == '/Lista_T_Pendientes/' %} active {% endif %}">
+                <a href="{% url 'L_Tonner' %}">Toners</a>
+            </li>
+            
+            
+            <li style="display: flex; align-items: center;">
+                <button class="buttonClose" onclick="OFF_SERVER()">
+                    <span class="X"></span>
+                    <span class="Y"></span>
+                    <div class="close">Cerrar</div>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <div style="padding: 1rem;">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% if request.path == '/R_Area/' %}
+    {% elif request.path == '/R_Persona/' %}
+    {% else %}
+    {% include 'layouts/footer.html' %}
+    {% endif %}
+    <style>
+        footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            color: rgb(250, 164, 5);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart {
+            color: aliceblue;
+        }
+
+        .navbar {
+            background-color: #fbe82c;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #124d71;
+            text-align: center;
+            padding: 20px 30px;
+            text-decoration: none;
+        }
+
+        .navbar .a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 24px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #045cab;
+            color: white;
+        }
+
+        .navbar .active a {
+            color: white;
+            background-color: #045cab;
+            width: max-content;
+        }
+
+        .navbar .active.green {
+            color: white;
+            background-color: #045cab;
+            ;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .buttonClose {
+            position: relative;
+            width: 2.5em;
+            height: 2.5em;
+            border: none;
+            background: rgba(180, 83, 107, 0.11);
+            border-radius: 5px;
+            transition: background 0.5s;
+        }
+
+        .X {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2em;
+            height: 1.5px;
+            background-color: rgb(255, 255, 255);
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .Y {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2em;
+            height: 1.5px;
+            background-color: #fff;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+
+        .close {
+            position: absolute;
+            display: flex;
+            padding: 0.8rem 1.5rem;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-50%);
+            top: 110%;
+            left: 50%;
+            width: 3em;
+            height: 1.7em;
+            font-size: 12px;
+            background-color: rgb(19, 22, 24);
+            color: rgb(187, 229, 236);
+            border: none;
+            border-radius: 3px;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .buttonClose:hover {
+            background-color: rgb(211, 21, 21);
+        }
+
+        .buttonClose:active {
+            background-color: rgb(130, 0, 0);
+        }
+
+        .buttonClose:hover>.close {
+            animation: close 0.2s forwards 0.25s;
+        }
+
+        @keyframes close {
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</body>
+
+</html>
+
+<script>
+    function inicio() {
+        window.location.href = "{% url 'Inicio' %}";
+    }
+
+    function OFF_SERVER() {
+        window.location.href = "{% url 'OFF_SERVER' %}";
+    }
+</script>

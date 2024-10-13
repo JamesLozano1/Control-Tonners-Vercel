@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Toner</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/ALL.css' %}">
+
+    <style>
+
+        h1 {
+            color: #333;
+        }
+
+        .detalles-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .detalle-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Detalles del Toner</h1>
+
+    <div class="detalles-container" style="display: flex; justify-content: space-evenly;">
+        <p><span class="detalle-label">Marca:</span> {{ producto.nombre }}</p>
+        <p><span class="detalle-label">Modelo:</span> {{ producto.Numero_Tonner }}</p>
+        <p><span class="detalle-label">Imagen:</span></p>
+        <img src="{{ producto.imagen.url }}" width="200px" height="200px">
+    </div>
+
+    <a href="{% url 'Toner_Recarga' %}" class="btn">Volver</a>
+</body>
+
+</html>
+<script>
+    setTimeout(function() {
+        window.location.href = "{% url 'Toner_Recarga' %}";
+    }, 2000);
+</script>
+{% endblock %}

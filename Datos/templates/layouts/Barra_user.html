@@ -1,0 +1,23 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/ALL.css' %}">
+</head>
+
+<div style="display: flex; justify-content: space-evenly;">
+    <a href="{% url 'R_Persona' %}" class="{% if request.path == '/R_Persona/' %} btnActive {% else %} btn {% endif %}">Persona</a>
+    <a href="{% url 'R_Area' %}" class="{% if request.path == '/R_Area/' %} btnActive {% else %} btn {% endif %}">Area</a>
+
+</div>
+<style>
+    .btnActive {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #14427d;
+    border-radius: 5px;
+    border: 1px solid #14427d;
+}
+</style>

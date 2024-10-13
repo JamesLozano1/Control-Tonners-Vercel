@@ -1,0 +1,121 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Web - Control de Toners</title>
+    <link rel="stylesheet" href="{% static 'CSS/ALL.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h4 {
+            color: #777;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .tel{
+            text-decoration: underline;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 title="Este es un mensaje oculto de la pagina">{{ title }}</h1>
+        </header>
+
+        <section>
+            <h3>Bienvenido a la aplicación web de control de toners de la empresa Seapto</h3>
+            <p>Esta plataforma proporciona herramientas para gestionar el inventario de toners.</p>
+        </section>
+
+        <section>
+            <h3>Sección: <span>Activos fijos</span></h3>
+            <p>Explora nuestras opciones de gestión de toners.</p>
+        </section>
+
+        <section>
+            <h4>Desarrollado por pasante del SENA ADSI</h4>
+        </section>
+
+        <section>
+            <h1>Contacto del Desarrollador</h1>
+            <h2>Teléfono: <a href="https://wa.link/f32z9g" class="tel">+57 322 470 7277</a></h2>
+        </section>
+        <section>
+            <center>
+                <H1>Manual de usuario</H1>
+                <a href="" class="btn">Descargar PDF</a>
+            </center>
+        </section>
+    </div>
+</body>
+
+</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+{% endblock %}

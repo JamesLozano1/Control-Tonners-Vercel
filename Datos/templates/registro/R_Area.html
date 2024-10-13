@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+
+{% include 'layouts/Barra_user.html'%}
+<head>
+    <title>Registro Area</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/ALL.css' %}">
+</head>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="link-container" style="display: flex; justify-content: space-evenly;">
+    <a href="{% url 'Lista_Areas' %}" class="styled-link">Lista de Areas</a>
+</div>
+<center>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Agregar</button>
+    </form>
+</center>
+<style>
+    form {
+        display: flex;
+        margin: 20px; 
+        padding: 50px; 
+        border: 1px solid #ccc; 
+        background-color: #f9f9f9; 
+        justify-content: space-evenly;
+    }
+
+    .styled-link {
+    text-decoration: none;
+    color: #045cab;
+    padding: 10px;
+    border: 1px solid #045cab;
+    border-radius: 5px;
+}
+
+  .styled-link:hover {
+    background-color: #045cab;
+    color: white;
+  }
+
+</style>
+
+{% endblock %}

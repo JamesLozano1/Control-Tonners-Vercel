@@ -1,0 +1,106 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cantidad de Impresoras y Detalles</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/ALL.css' %}">
+
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Detalle de Impresoras Oficina Principal</h1>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                {% for toner in tipos_toner %}
+                <th>{{ toner }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for marca, toner_dict in impresoras_por_marca_toner.items %}
+            <tr>
+                <td>{{ marca }}</td>
+                {% for toner, cantidad in toner_dict.items %}
+                <td class="{% if cantidad == 0 %}active{% endif %}">{{ cantidad }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>Total Impresoras:</td>
+                <td colspan="{{ tipos_toner|length }}"><h3>{{ total_general }}</h3></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'Ver_Tabla' %}" class="btn">Volver</a>
+</body>
+
+</html>
+<style>
+    .active {
+        color: red;
+    }
+
+
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 20px auto;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        padding: 10px;
+        text-align: center;
+    }
+
+    td {
+        padding: 8px;
+        text-align: center;
+    }
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

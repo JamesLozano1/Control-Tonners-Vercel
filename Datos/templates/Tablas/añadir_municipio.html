@@ -1,0 +1,113 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<title>Registro Toner</title>
+
+<style>
+    /* Estilos generales */
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form {
+        width: 400px; 
+        padding: 20px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    form h2 {
+        text-align: center;
+        margin-bottom: 20px; 
+    }
+
+    form label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    form button {
+        background-color: #21a4d8;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    form button:hover {
+        background-color: #0056b3;
+    }
+
+    .navbar {
+        background-color: #fbe82c;
+        overflow: hidden; 
+    }
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: #124d71;
+        text-align: center;
+        padding: 20px 30px;
+        text-decoration: none;
+    }
+
+    .navbar a:hover {
+        background-color: #045cab;
+        color: white;
+    }
+
+    .navbar .active a {
+        background-color: #045cab;
+        color: white;
+    }
+
+    .navbar .a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px 24px;
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+</style>
+
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 style="text-align: center;">Registro Toner Municipio</h2>
+
+        {{ form.as_p }}
+        <br>
+        <button type="submit">Agregar</button>
+    </form>
+</div>
+
+{% endblock %}
+
+
+

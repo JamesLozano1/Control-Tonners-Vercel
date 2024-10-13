@@ -1,0 +1,74 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% include 'layouts/Barra_user.html' %}
+
+<title>Registro de Area</title>
+
+<br>
+<div class="container">
+  <h2 style="text-align: center;">Editar Información de los Subprocesos y actividades</h2>
+  <br>
+
+
+  <form method="post" enctype="multipart/form-data" style="max-width: 600px; margin: 0 auto;">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <br>
+    <hr>
+    <br>
+
+    <button type="submit" class="btn btn-primary" style="width: 100%;">Guardar</button>
+  </form>
+</div>
+
+<style>
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+</style>
+
+
+{% endblock %}

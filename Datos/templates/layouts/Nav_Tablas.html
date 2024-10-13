@@ -1,0 +1,29 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/ALL.css' %}">
+
+<center>
+    <div style="margin-bottom: 1rem;">
+        <a href="{% url 'Ver_Tabla' %}" class="{% if request.path == '/Ver_Tabla_OFP/' %} btnActive {% elif request.path == '/buscar_T_OFP/' %} btnActive {% else %} btn {% endif %}">Oficina Principal</a>
+        <a href="{% url 'Ver_Tabla_Municipios' %}" class="{% if request.path == '/Ver_Tabla_Municipios/' %} btnActive {% elif request.path == '/buscar_Tabla_T_Toners_Municipios/' %} btnActive {% else %} btn {% endif %}">Municipios</a>
+    </div>
+</center>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .btnActive {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #14427d;
+    border-radius: 5px;
+    border: 1px solid #14427d;
+}
+</style>

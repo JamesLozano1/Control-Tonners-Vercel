@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/ALL.css' %}">
+    <title>Exito</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .success-message {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #008000; /* Color verde para mensaje de éxito */
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333333;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Color azul para botón */
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #0056b3; /* Cambia el color al pasar el ratón */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="success-message">
+        <h1>¡Acción completada con éxito!</h1>
+        <p>Tu solicitud se ha procesado correctamente.</p>
+        <p>Puedes volver a la <a href="{% url 'Toner_Recarga' %}" class="btn">página de inicio</a>.</p>
+    </div>
+</body>
+
+</html>
+
+<script>
+    setTimeout(function() {
+        window.location.href = "{% url 'Toner_Recarga' %}";
+    }, 1);
+</script>

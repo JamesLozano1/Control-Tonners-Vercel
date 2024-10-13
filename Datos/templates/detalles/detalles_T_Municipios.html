@@ -1,0 +1,77 @@
+<title>Detalles Tabla Municipios</title>
+
+
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/ALL.css' %}">
+    
+    <title>Cantidad de Impresoras y Detalles</title>
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Detalle de Impresoras Municipios</h1>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                {% for toner in tipos_toner %}
+                <th>{{ toner }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for marca, toner_dict in impresoras_por_marca_toner.items %}
+            <tr>
+                <td>{{ marca }}</td>
+                {% for toner, cantidad in toner_dict.items %}
+                <td class="{% if cantidad == 0 %}active{% endif %}">{{ cantidad }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>Total Impresoras:</td>
+                <td colspan="{{ tipos_toner|length }}">
+                    <h3>{{ total_general }}</h3>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'Ver_Tabla_Municipios' %}" class="btn">Volver</a>
+</body>
+
+</html>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
